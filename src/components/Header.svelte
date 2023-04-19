@@ -6,7 +6,7 @@
 </script>
 
 <header
-  class="flex items-center justify-between h-16 border-b border-gray-400/30"
+  class="flex items-center justify-between py-4 border-b border-gray-400/30"
 >
   <div
     class="flex items-center mx-4 bg-emerald-800 text-emerald-200 py-2 px-4 rounded-md"

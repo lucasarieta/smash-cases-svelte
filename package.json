@@ -10,11 +10,15 @@
     "check": "svelte-check --tsconfig ./tsconfig.json"
   },
   "devDependencies": {
+    "@rocketseat/eslint-config": "^1.2.0",
     "@sveltejs/vite-plugin-svelte": "^2.0.3",
     "@tsconfig/svelte": "^3.0.0",
     "@types/events": "^3.0.0",
     "autoprefixer": "^10.4.14",
+    "eslint": "^8.38.0",
     "postcss": "^8.4.21",
+    "prettier": "^2.8.7",
+    "prettier-plugin-tailwindcss": "^0.2.7",
     "svelte": "^3.55.1",
     "svelte-check": "^2.10.3",
     "tailwindcss": "^3.3.1",

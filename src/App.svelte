@@ -20,7 +20,7 @@
 </svelte:head>
 
 {#if visible}
-  <div class="text-gray-300 bg-[#0f1923] h-screen flex-flex-col">
+  <div class="text-gray-300 bg-[#0f1923] min-h-screen flex flex-col">
     <Router
       routes={{
         "/": Home,

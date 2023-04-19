@@ -39,6 +39,30 @@
         price: 200,
         items: [],
       },
+      {
+        id: 5,
+        name: "Caixa de AK-47",
+        image:
+          "https://cdn.discordapp.com/attachments/1003120601415815249/1096893690498273300/Caixa_AK_47_1.png",
+        price: 200,
+        items: [],
+      },
+      {
+        id: 6,
+        name: "Caixa de AK-47",
+        image:
+          "https://cdn.discordapp.com/attachments/1003120601415815249/1096893690498273300/Caixa_AK_47_1.png",
+        price: 200,
+        items: [],
+      },
+      {
+        id: 7,
+        name: "Caixa de AK-47",
+        image:
+          "https://cdn.discordapp.com/attachments/1003120601415815249/1096893690498273300/Caixa_AK_47_1.png",
+        price: 200,
+        items: [],
+      },
     ] satisfies ICase[];
   });
 
