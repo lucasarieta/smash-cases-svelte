@@ -1,18 +1,18 @@
-import { EventEmitter } from 'events';
-import { onDestroy } from 'svelte';
-const bus = new EventEmitter();
+import { EventEmitter } from 'events'
+import { onDestroy } from 'svelte'
+const bus = new EventEmitter()
 
 function onListenEvent(event: MessageEvent) {
-  const { name, payload } = event.data;
+  const { name, payload } = event.data
 
-  bus.emit(name, payload);
+  bus.emit(name, payload)
 }
 
 export function useEvent(eventName: string, callback: (payload: any) => any) {
-  bus.on(eventName, callback);
+  bus.on(eventName, callback)
 
   onDestroy(() => {
-    bus.removeListener(eventName, callback);
+    bus.removeListener(eventName, callback)
   })
 }
 
