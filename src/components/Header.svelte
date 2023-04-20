@@ -1,8 +1,15 @@
 <script lang="ts">
-  export let coins: number;
-  export let storeUrl: string;
-
   import { DollarSign } from "lucide-svelte";
+  import {
+    credits as creditsStore,
+    storeUrl as storeUrlStore,
+  } from "../stores/user";
+
+  let credits = 0;
+  let storeUrl = "";
+
+  creditsStore.subscribe((value) => (credits = value));
+  storeUrlStore.subscribe((value) => (storeUrl = value));
 </script>
 
 <header
@@ -12,7 +19,7 @@
     class="flex items-center mx-4 bg-emerald-800 text-emerald-200 py-2 px-4 rounded-md"
   >
     <DollarSign class="w-4 h-4" />
-    {coins}
+    {credits}
   </div>
 
   <a

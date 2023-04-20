@@ -4,6 +4,6 @@
   import Header from "../components/Header.svelte";
 </script>
 
-<Header coins={100} storeUrl="https://hydrus.gg" />
+<Header />
 <Banner />
 <CasePreviewContainer />

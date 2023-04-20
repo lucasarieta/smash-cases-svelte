@@ -1,13 +1,21 @@
 <script lang="ts">
   import Router from "svelte-spa-router";
+  import { lua } from "./lib/callback";
   import { isDevelopment } from "./lib/env";
   import { useEvent } from "./lib/events";
+  import "./mocks";
   import Home from "./pages/Home.svelte";
   import OpenCase from "./pages/OpenCase.svelte";
+  import { credits, storeUrl } from "./stores/user";
 
   let visible: boolean = isDevelopment ? true : false;
 
   useEvent("visibility", (status: boolean) => (visible = status));
+
+  lua("GET_INFOS").then((data: { credits: number; storeUrl: string }) => {
+    credits.set(data.credits);
+    storeUrl.set(data.storeUrl);
+  });
 </script>
 
 <svelte:head>

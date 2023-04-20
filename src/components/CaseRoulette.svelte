@@ -1,11 +1,17 @@
 <script lang="ts">
   import { DollarSign, RotateCcw } from "lucide-svelte";
   import { link } from "svelte-spa-router";
+  import { lua } from "../lib/callback";
   import type { Case } from "../lib/types";
+  import { credits as creditsStore } from "../stores/user";
   import { animate, getWinnerItem, shuffleArray } from "../utils";
   import Item from "./Item.svelte";
 
   export let currentCase: Case;
+
+  let credits = 0;
+
+  creditsStore.subscribe((value) => (credits = value));
 
   let isSpinning = false;
   const rouletteItems = [...currentCase.items];
@@ -19,6 +25,15 @@
     if (isSpinning) return;
 
     isSpinning = true;
+
+    const canSpin = await lua("OPEN_CASE", {
+      price: currentCase.price,
+    });
+
+    if (!canSpin) {
+      isSpinning = false;
+      return;
+    }
 
     const roulette = document.getElementById("roulette");
     // return roulette to initial position
@@ -68,6 +83,10 @@
       );
     }, 500);
 
+    lua("WIN_OPENING_CASE", {
+      winnerItem,
+    });
+
     setTimeout(() => {
       isSpinning = false;
     }, 1500);
@@ -109,7 +128,7 @@
   <div class="flex items-center justify-center gap-2 mt-8">
     <button
       class="flex items-center bg-emerald-800 gap-1 text-emerald-200 py-2 text-sm px-4 rounded-md disabled:opacity-80 disabled:cursor-not-allowed"
-      disabled={isSpinning}
+      disabled={isSpinning || currentCase.price > credits}
       on:click={spin}
     >
       {#if !isSpinning}

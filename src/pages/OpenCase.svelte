@@ -15,7 +15,7 @@
   });
 </script>
 
-<Header coins={100} storeUrl="https://hydrus.gg" />
+<Header />
 {#if currentCase}
   <CaseRoulette {currentCase} />
 {/if}

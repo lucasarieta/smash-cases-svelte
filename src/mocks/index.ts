@@ -1,6 +1,15 @@
 import { addLuaMock } from '../lib/callback'
 import type { Case } from '../lib/types'
 
+addLuaMock('OPEN_CASE', () => true)
+
+addLuaMock('GET_INFOS', () => {
+  return {
+    credits: 999,
+    storeUrl: 'https://twitch.tv',
+  }
+})
+
 addLuaMock('GET_CASES', () => {
   return [
     {
