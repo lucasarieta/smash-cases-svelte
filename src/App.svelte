@@ -11,6 +11,7 @@
   let visible: boolean = isDevelopment ? true : false;
 
   useEvent("visibility", (status: boolean) => (visible = status));
+  useEvent("updateCredits", (value: number) => credits.set(value));
 
   lua("GET_INFOS").then((data: { credits: number; storeUrl: string }) => {
     credits.set(data.credits);
